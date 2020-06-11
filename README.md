@@ -11,3 +11,13 @@ Copy screenshots to the clipboard
 
 ## Downloads
 [version 1.7.1.101 (20181027 - win32)](https://sourceforge.net/projects/quakeviewer/files/QuakeViewer_1.7/QuakeViewer_1.7.1.101_bin.zip/download)
+
+
+## Screenshots
+
+![Screenshot 1](https://i.postimg.cc/yxYK4Lg9/Image1.jpg "Screenshot 1")
+
+![Screenshot 2](https://i.postimg.cc/pVqxYM4B/Image2.jpg "Screenshot 2")
+
+![Screenshot 3](https://i.postimg.cc/63hKmk3t/Image3.jpg "Screenshot 3")
+
