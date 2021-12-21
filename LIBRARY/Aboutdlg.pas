@@ -94,7 +94,7 @@ begin
       reg.Free;
     end;
 
-    GetDir(0, s); // Current drive's directory   
+    GetDir(0, s); // Current drive's directory
 
     dsnum := DiskFree(0) div 1000000;
     if dsnum > 100000 then

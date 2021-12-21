@@ -1,7 +1,7 @@
-// Portable Pixelmap is a UNIX raster format for exchanging images in color. Supported bit per pixel 
+// Portable Pixelmap is a UNIX raster format for exchanging images in color. Supported bit per pixel
 // depth is 24bpp(true color). Both binary and ascii formats are supported.
 ///////////////////////////////////////////////////
-// Author: Jim Valavanis, 
+// Author: Jim Valavanis,
 // E-Mail: jimmyvalavanis@yahoo.gr
 // Site  : http://www.geocities.com/jimmyvalavanis/
 ///////////////////////////////////////////////////

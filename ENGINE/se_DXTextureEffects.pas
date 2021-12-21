@@ -486,7 +486,7 @@ end;
 
 //Texturename1: rsWhite
 //Texturename2: rsGray RGB(192, 192, 192)
-// Creates an effect just as looking throu glass and what you are looking 
+// Creates an effect just as looking throu glass and what you are looking
 // seems to be more luminous
 // Must be rendered at the end of the scene....
 procedure TE_ALPH_SeeThrouGlass(var TE_ALPH: TTextureAlphaEffect);

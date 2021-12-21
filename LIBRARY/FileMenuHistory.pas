@@ -23,7 +23,7 @@ type
     fPaths: TStringList;
   protected
     { Protected declarations }
-    procedure DoFileOpen(Sender: TObject); 
+    procedure DoFileOpen(Sender: TObject);
     procedure SetMenuItems0(Value: TMenuItem); virtual;
     procedure SetMenuItems1(Value: TMenuItem); virtual;
     procedure SetMenuItems2(Value: TMenuItem); virtual;

@@ -740,7 +740,7 @@ implementation
 
 uses
   se_DXDUtils;
-  
+
 {******** TCompressorCache ********}
 constructor TCompressorCache.Create(aZip: TZipFile; aID: integer);
 begin

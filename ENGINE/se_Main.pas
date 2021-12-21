@@ -237,10 +237,10 @@ const
 // Maximum number of polygon vertexes
   MAXVERTEXES = 32767;
 
-// Complexity for sphere's generation 
+// Complexity for sphere's generation
   MAXRINGS = 128;
   MAXSEGMENTS = 250;
-// Complexity for ring's generation 
+// Complexity for ring's generation
   MAXRINGRINGS = 160;
   MAXRINGSEGMENTS = 100;
 // (2 * MAXRINGS * (MAXSEGMENTS + 1) - 1) -> must be < $FFFF,
@@ -268,7 +268,7 @@ const
 // Maximum number of DrawPrimitive calls (with appropriate values of
 // D3DRENDERSTATE_SRCBLEND & D3DRENDERSTATE_DESTBLEND) to draw the
 // transparent effect. Using bigger values of MAXTRANSPARENCYREPLICATION,
-// draws fully transparent objects, using the mask generated at construction 
+// draws fully transparent objects, using the mask generated at construction
   MAXTRANSPARENCYREPLICATION = 16;
 
 const
@@ -455,7 +455,7 @@ type
   TTextureNames = array[0..MAXTEXTURES - 1, 0..1] of string;
 
   TD3DLightType = (
-    ltLinear, // Linear descease 
+    ltLinear, // Linear descease
     ltFixed   // Fixed intensity
   );
 
@@ -489,8 +489,8 @@ type
     function GetTypeID: byte; virtual;  // Type
     function GetKeyID: integer; virtual;// Êשהיךüע (key)
     function Description: string;
-    procedure Move(vM: TD3DVector); overload; virtual;     
-    procedure Move(x, y, z: TD3DValue); overload; virtual; 
+    procedure Move(vM: TD3DVector); overload; virtual;
+    procedure Move(x, y, z: TD3DValue); overload; virtual;
   end;
 
   TOnAfterDXDrawEvent = procedure(aDXDraw: TDXDraw) of object;
@@ -566,10 +566,10 @@ type
 {$ENDIF}
     procedure Draw; virtual;            // Draw
     procedure Move(vM: TD3DVector); overload; virtual;
-    procedure Move(x, y, z: TD3DValue); overload; virtual; 
-    procedure MoveTo(vM: TD3DVector); overload; virtual;   
+    procedure Move(x, y, z: TD3DValue); overload; virtual;
+    procedure MoveTo(vM: TD3DVector); overload; virtual;
     procedure MoveTo(x, y, z: TD3DValue); overload; virtual;
-    procedure Rotate(vM: TD3DVector); overload; virtual;   
+    procedure Rotate(vM: TD3DVector); overload; virtual;
     procedure Rotate(x, y, z: TD3DValue); overload; virtual;
     procedure GetTextureNames(var s: TDXStringList); virtual; abstract;
     function IsIdentical(D3DSurface: TObject): boolean; virtual; // Check similarity
@@ -689,8 +689,8 @@ type
     function GetLocatePosition(aDistance: TD3DValue): TD3DVector; override;
     procedure ApplyLight(l: TD3DSceneLight); override;
     function GetTypeID: byte; override;
-    procedure Move(vM: TD3DVector); override;     
-    procedure Rotate(vM: TD3DVector); override;   
+    procedure Move(vM: TD3DVector); override;
+    procedure Rotate(vM: TD3DVector); override;
 {$IFDEF DESIGNER}
     function CanSaveVertexes: boolean; override;
     procedure SaveVertexes(fName: string); override;
@@ -701,7 +701,7 @@ type
 {$ENDIF}
     function GetNumVertexes: integer; override;
     function GetNumTriangles: integer; override;
-    procedure Draw; override;            
+    procedure Draw; override;
     property NumVertexes: integer read fNumVertexes write SetNumVertexes;
     property NumIndices: integer read fNumIndices write SetNumIndices;
     property Vertexes: PD3DLVertexArray read fVertexes write fVertexes;
@@ -802,7 +802,7 @@ type
 {$ENDIF}
     function GetNumVertexes: integer; override;
     function GetNumTriangles: integer; override;
-    procedure Draw; override;           
+    procedure Draw; override;
     property NumVertexes: integer read fNumVertexes write SetNumVertexes;
     property NumIndices: integer read fNumIndices write SetNumIndices;
     property Vertexes: PD3DLVertexArray read fVertexes write fVertexes;
@@ -925,7 +925,7 @@ type
     fLastFrameFromOtherAnimation: boolean;
 {$IFNDEF NO_OLDSTREAMINGRUTINES}
     procedure OldLoadFromStream(s: TStream; version: integer);
-{$ENDIF}    
+{$ENDIF}
   protected
     procedure InitParams; override;
     procedure fCalcCenterAndRadius; override;
@@ -1094,7 +1094,7 @@ type
     procedure GetInfo(p: Pointer); override;
     function GetLocatePosition(aDistance: TD3DValue): TD3DVector; override;
     procedure ApplyLight(l: TD3DSceneLight); override;
-{$IFDEF DESIGNER}                  
+{$IFDEF DESIGNER}
     function CanSaveVertexes: boolean; override;
     procedure SaveVertexes(fName: string); override;
     function RTL_CanBeRuntime: boolean; override;
@@ -1122,7 +1122,7 @@ type
     NumVertexes: SmallInt;
     NumTextures: SmallInt;
     zOrder: integer;
-    Interval: single;  
+    Interval: single;
     PrimitiveType: TD3DPrimitiveType;
     Transparency: byte;
     Cull: TD3DCull;
@@ -1131,7 +1131,7 @@ type
   end;
 
   TD3DPolygonInfo2 = record
-    key: integer;      
+    key: integer;
     C: TColor;
     u,v: single;
     du, dv: single;
@@ -1139,7 +1139,7 @@ type
     NumVertexes: SmallInt;
     NumTextures: SmallInt;
     zOrder: integer;
-    Interval: single;   
+    Interval: single;
     PrimitiveType: TD3DPrimitiveType;
     Transparency: byte;
     Cull: TD3DCull;
@@ -1231,10 +1231,10 @@ type
 {$IFNDEF NO_D3DBILLBOARDS}
   PD3DBillBoardInfo = ^TD3DBillBoardInfo;
   TD3DBillBoardInfo = record
-    key: integer;         
+    key: integer;
     C: TColor;
     StartH, EndH: single; // values in [0..1] - Horizont cover percent
-    Interval: single;     
+    Interval: single;
     zOrder: integer;
     NumTextures: SmallInt;
     TextureNames: TTextureNames;
@@ -1289,16 +1289,16 @@ type
 {$IFNDEF NO_D3DCUBES}
   PD3DCubeInfo = ^TD3DCubeInfo;
   TD3DCubeInfo = record
-    key: integer;                     
-    C: TColor;                        
-    u,v: single;                      
+    key: integer;
+    C: TColor;
+    u,v: single;
     du,dv: single;
-    NumTextures: SmallInt;            
+    NumTextures: SmallInt;
     zOrder: integer;
     Interval: single;
     x, y, z: TD3DValue;
     dx, dy, dz: TD3DValue;
-    Width, Height, Depth: TD3DValue;  
+    Width, Height, Depth: TD3DValue;
     Transparency: byte;
     Cull: TD3DCull;
     VisibleSides: array[0..5] of boolean;
@@ -1359,7 +1359,7 @@ type
     procedure SizeNumVertexes(const NewSize: integer); virtual;
 {$IFNDEF NO_DXMESHES}
     procedure AdjustMeshData; override;
-{$ENDIF}    
+{$ENDIF}
   public
     TheVertexes: PD3DLVertexArray;
 {$IFDEF DESIGNER}
@@ -1383,16 +1383,16 @@ type
 {$IFNDEF NO_D3DSPHERES}
   PD3DSphereInfo = ^TD3DSphereInfo;
   TD3DSphereInfo = record
-    key: integer;                     
-    C: TColor;                        
-    u,v: single;                      
+    key: integer;
+    C: TColor;
+    u,v: single;
     du,dv: single;
-    NumTextures: SmallInt;            
+    NumTextures: SmallInt;
     zOrder: integer;
-    Interval: single;                 
-    x, y, z: TD3DValue;               
-    dx, dy, dz: TD3DValue;            
-    Width, Height, Depth: TD3DValue;  
+    Interval: single;
+    x, y, z: TD3DValue;
+    dx, dy, dz: TD3DValue;
+    Width, Height, Depth: TD3DValue;
     Transparency: byte;
     Cull: TD3DCull;
     NumRings, NumSegments: byte;
@@ -1451,19 +1451,19 @@ type
 {$IFNDEF NO_D3DRINGS}
   PD3DRingInfo = ^TD3DRingInfo;
   TD3DRingInfo = record
-    key: integer;                     
-    C: TColor;                        
-    u, v: single;                     
-    du, dv: single;                   
-    NumTextures: SmallInt;            
+    key: integer;
+    C: TColor;
+    u, v: single;
+    du, dv: single;
+    NumTextures: SmallInt;
     zOrder: integer;
-    Interval: single;                 
-    x, y, z: TD3DValue;               
-    dx, dy, dz: TD3DValue;            
-    Width, Height, Depth: TD3DValue;  
+    Interval: single;
+    x, y, z: TD3DValue;
+    dx, dy, dz: TD3DValue;
+    Width, Height, Depth: TD3DValue;
     Transparency: byte;
     Cull: TD3DCull;
-    UVType: TD3DConstantUVType;       
+    UVType: TD3DConstantUVType;
     InnerOuterFactor: TD3DValue;      // outer to inner factor
     NumRings, NumSegments: byte;      // complexity
     TextureNames: TTextureNames;
@@ -1477,7 +1477,7 @@ type
     procedure ApplyInfoToVertexes; virtual;
     procedure CreateInitialVertexes; virtual;
     procedure SetComplexityLevel(Curlevel, ComplexityLevel: integer); override;
-    function GetBoundFactor: TD3DValue; override; 
+    function GetBoundFactor: TD3DValue; override;
     procedure fCalcCenterAndRadius; override;
   public
     Info: TD3DRingInfo;
@@ -1518,16 +1518,16 @@ type
 {$IFNDEF NO_D3DCONES}
   PD3DConeInfo = ^TD3DConeInfo;
   TD3DConeInfo = record
-    key: integer;                    
-    C: TColor;                        
-    u,v: TD3DValue;                 
+    key: integer;
+    C: TColor;
+    u,v: TD3DValue;
     du,dv: TD3DValue;
-    NumTextures: SmallInt;           
+    NumTextures: SmallInt;
     zOrder: integer;
-    Interval: single;                
-    x, y, z: TD3DValue;             
-    dx, dy, dz: TD3DValue;          
-    Width, Height, Depth: TD3DValue; 
+    Interval: single;
+    x, y, z: TD3DValue;
+    dx, dy, dz: TD3DValue;
+    Width, Height, Depth: TD3DValue;
     Transparency: byte;
     Cull: TD3DCull;
     NumSegments: byte;
@@ -1546,7 +1546,7 @@ type
     procedure ApplyInfoToVertexes; virtual;
     procedure CreateInitialVertexes; virtual;
     procedure SetComplexityLevel(Curlevel, ComplexityLevel: integer); override;
-    function GetBoundFactor: TD3DValue; override; 
+    function GetBoundFactor: TD3DValue; override;
     procedure fCalcCenterAndRadius; override;
   public
     Info: TD3DConeInfo;
@@ -1587,16 +1587,16 @@ type
 {$IFNDEF NO_D3DCYLINDERS}
   PD3DCylinderInfo = ^TD3DCylinderInfo;
   TD3DCylinderInfo = record
-    key: integer;                    
-    C: TColor;        
-    u,v: TD3DValue;   
+    key: integer;
+    C: TColor;
+    u,v: TD3DValue;
     du,dv: TD3DValue;
-    NumTextures: SmallInt; 
+    NumTextures: SmallInt;
     zOrder: integer;
-    Interval: single;         
-    x, y, z: TD3DValue;             
-    dx, dy, dz: TD3DValue;          
-    Width, Height, Depth: TD3DValue;  
+    Interval: single;
+    x, y, z: TD3DValue;
+    dx, dy, dz: TD3DValue;
+    Width, Height, Depth: TD3DValue;
     Transparency: byte;
     Cull: TD3DCull;
     NumSegments: byte;
@@ -1611,13 +1611,13 @@ type
     OriginalRings: byte;
 {$IFNDEF NO_OLDSTREAMINGRUTINES}
     procedure OldLoadFromStream(s: TStream; version: integer);
-{$ENDIF}    
+{$ENDIF}
   protected
     procedure InitParams; override;
     procedure ApplyInfoToVertexes; virtual;
     procedure CreateInitialVertexes; virtual;
     procedure SetComplexityLevel(Curlevel, ComplexityLevel: integer); override;
-    function GetBoundFactor: TD3DValue; override; 
+    function GetBoundFactor: TD3DValue; override;
     procedure fCalcCenterAndRadius; override;
   public
     Info: TD3DCylinderInfo;
@@ -1658,18 +1658,18 @@ type
 {$IFNDEF NO_D3DTEXTS}
   PD3DTextInfo = ^TD3DTextInfo;
   TD3DTextInfo = record
-    key: integer;                    
+    key: integer;
     frontC,
-    backC: TColor;                   
-    u, v: single;                     
-    du, dv: single;                  
-    backU, backV: single;            
-    NumTextures: SmallInt;        
+    backC: TColor;
+    u, v: single;
+    du, dv: single;
+    backU, backV: single;
+    NumTextures: SmallInt;
     zOrder: integer;
-    Interval: single;               
-    x, y, z: TD3DValue;              
-    dx, dy, dz: TD3DValue;          
-    Width, Height, Depth: TD3DValue;  
+    Interval: single;
+    x, y, z: TD3DValue;
+    dx, dy, dz: TD3DValue;
+    Width, Height, Depth: TD3DValue;
     Transparency: byte;
     ConnectBackWithFront: boolean;
     ItalicLevelH,                     // Italic factor (0.0 to 1.0) , 0.5 is normal
@@ -1686,7 +1686,7 @@ type
     procedure SizeNumVertexes(const NewSize: integer); virtual;
 {$IFNDEF NO_OLDSTREAMINGRUTINES}
     procedure OldLoadFromStream(s: TStream; version: integer);
-{$ENDIF}    
+{$ENDIF}
   protected
     procedure InitParams; override;
     procedure ApplyInfoToVertexes; virtual;
@@ -1733,11 +1733,11 @@ type
 {$IFNDEF NO_D3DPLUGINS}
   PD3DPlugInInfo = ^TD3DPlugInInfo;
   TD3DPlugInInfo = record
-    key: integer;         
-    x, y, z: TD3DValue;   
+    key: integer;
+    x, y, z: TD3DValue;
     dx, dy, dz: TD3DValue;
     zOrder: integer;
-    DLL: string;    
+    DLL: string;
     Params: string;
     TextureName: string;
   end;
@@ -1776,14 +1776,14 @@ type
 {$IFNDEF NO_D3DPROCEDURALOBJECTS}
   PD3DProceduralObjectInfo= ^TD3DProceduralObjectInfo;
   TD3DProceduralObjectInfo = record
-    key: integer;      
+    key: integer;
     zOrder: integer;
     Interval: single;
     PrimitiveType: TD3DPrimitiveType;
     Transparency: byte;
     Cull: TD3DCull;
-    x, y, z: TD3DValue;               
-    dx, dy, dz: TD3DValue;            
+    x, y, z: TD3DValue;
+    dx, dy, dz: TD3DValue;
     NumTextures: SmallInt;
     TextureNames: TTextureNames;
     ModuleName: string;
@@ -1929,11 +1929,11 @@ type
     procedure RTL_GetRunTimeCode(out DeclareSession, InitSession, DrawSession, DoneSession: string;
       ComplexityLevel: integer; ComplexityDistance: TD3DValue; tLights: TDXStringList;
       doTexture: boolean; var curCull: TD3DCull); override;
-{$ENDIF}      
+{$ENDIF}
     function GetNumVertexes: integer; override;
     function GetNumTriangles: integer; override;
   end;
-{$ENDIF}  
+{$ENDIF}
 
 {$IFNDEF NO_D3DSOUNDS}
   TD3DBaseAudio = class(TPersistent)
@@ -1965,8 +1965,8 @@ type
 
   PD3DSoundInfo = ^TD3DSoundInfo;
   TD3DSoundInfo = record
-    Key: integer;             
-    x, y, z: TD3DValue;       
+    Key: integer;
+    x, y, z: TD3DValue;
     DopplerEffectEnabled: boolean;
     SoundSpeed: TD3DValue;
     MaxHearAbility: TD3DValue; // max distance we can hear the sound
@@ -2008,9 +2008,9 @@ type
 
   PD3DToneInfo = ^TD3DToneInfo;
   TD3DToneInfo = record
-    Key: integer;              
-    x, y, z: TD3DValue;        
-    MaxHearAbility: TD3DValue; 
+    Key: integer;
+    x, y, z: TD3DValue;
+    MaxHearAbility: TD3DValue;
     Loop: boolean;
     Enabled: boolean;
     Frequency: Smallint;
@@ -2044,7 +2044,7 @@ type
     procedure Rotate(vM: TD3DVector); overload; override;
     function GetKeyID: integer; override;
     function GetTypeID: integer; override;
-    function GetDistance(aPosition: TD3DVector): TD3DValue; override; 
+    function GetDistance(aPosition: TD3DVector): TD3DValue; override;
     procedure Prepare; virtual;
   end;
 {$ENDIF}
@@ -2183,9 +2183,9 @@ type
 
   PD3DSceneInfo = ^TD3DSceneInfo;
   TD3DSceneInfo = record
-    Key: integer;       
-    x, y, z: TD3DValue; 
-    dx, dy, dz: TD3DValue; 
+    Key: integer;
+    x, y, z: TD3DValue;
+    dx, dy, dz: TD3DValue;
     PathToScene: string;       // must be last at Scene.LoadFromStream
   end;
 
@@ -2217,7 +2217,7 @@ type
     fScene: TD3DScene;
     fLastRotationVector: TD3DVector;
     fLastPositionVector: TD3DVector;
-    factor: TD3DValue;              
+    factor: TD3DValue;
     fHasExecute: boolean; // False only at the beginning
     function GetRunTime: boolean;
   public
@@ -2509,14 +2509,14 @@ type
 {$ENDIF}
     function AddStreamToCollection(var StreamName: string):TStream; virtual;
     procedure GetTextureNames(var s: TDXStringList); override;
-    procedure InitialMove(vM: TD3DVector); overload; virtual;   // only if fAttached at beginning and at script 
-    procedure InitialRotate(vM: TD3DVector); overload; virtual; // only if fAttached at beginning and at script 
-    procedure InitialMove(x, y, z: TD3DValue); overload; virtual;  // only if fAttached at beginning and at script 
-    procedure InitialRotate(x, y, z: TD3DValue); overload; virtual; // only if fAttached at beginning and at script 
+    procedure InitialMove(vM: TD3DVector); overload; virtual;   // only if fAttached at beginning and at script
+    procedure InitialRotate(vM: TD3DVector); overload; virtual; // only if fAttached at beginning and at script
+    procedure InitialMove(x, y, z: TD3DValue); overload; virtual;  // only if fAttached at beginning and at script
+    procedure InitialRotate(x, y, z: TD3DValue); overload; virtual; // only if fAttached at beginning and at script
     procedure Move(vM: TD3DVector); override;
     procedure Rotate(vM: TD3DVector); override;
-    procedure MoveObjects(ID, key: integer; x, y, z: TD3DValue); 
-    procedure MoveObjectsTo(ID, key: integer; x, y, z: TD3DValue); 
+    procedure MoveObjects(ID, key: integer; x, y, z: TD3DValue);
+    procedure MoveObjectsTo(ID, key: integer; x, y, z: TD3DValue);
     procedure RotateObjects(ID, key: integer; dx, dy, dz: TD3DValue); overload; // Rotate objects around their position
     procedure RotateObjectsAround(ID, key: integer; x, y, z: TD3DValue; dx, dy, dz: TD3DValue); // Rotate objects around the given point
     procedure MoveSurface(index: integer; x, y, z: TD3DValue); // Move object
@@ -2632,7 +2632,7 @@ type
     procedure OptimizeZOrder; virtual;
 {$IFNDEF NO_D3DBILLBOARDS}
     procedure OptimizeBillBoards; virtual;
-{$ENDIF}    
+{$ENDIF}
     function GetParentPositionVector: TD3DVector; virtual;
     function GetParentRotationVector: TD3DVector; virtual;
     function CalcDistance(const aPosition: TD3DVector): TD3DValue; override;
@@ -2640,7 +2640,7 @@ type
     procedure Draw; override;
 {$IFNDEF NO_DXMESHES}
     procedure DoDrawMesh; override;
-{$ENDIF}    
+{$ENDIF}
     procedure ThreadDraw(level: byte = 1); virtual;
     procedure BeforeDraw; virtual;
     procedure AfterDraw; virtual;
@@ -2715,7 +2715,7 @@ type
 {$ENDIF}
 {$IFNDEF NO_D3DEXOBJECTS}
     function  GetExObjects(key: integer; list: TList): integer; virtual;
-{$ENDIF}    
+{$ENDIF}
 {$IFNDEF NO_D3DTRIANGLES}
     function  GetTriangles(key: integer; list: TList): integer; virtual;
 {$ENDIF}
@@ -2733,7 +2733,7 @@ type
 {$ENDIF}
 {$IFNDEF NO_D3DSPHERES}
     function  GetSpheres(key: integer; list: TList): integer; virtual;
-{$ENDIF}    
+{$ENDIF}
 {$IFNDEF NO_D3DCONES}
     function  GetCones(key: integer; list: TList): integer; virtual;
 {$ENDIF}
@@ -2751,7 +2751,7 @@ type
 {$ENDIF}
 {$IFNDEF NO_D3DTEXTS}
     function  GetTexts(key: integer; list: TList): integer; virtual;
-{$ENDIF}    
+{$ENDIF}
 {$IFNDEF NO_SCRIPTS}
     function  GetScripts(key: integer; list: TList): integer; virtual;
     function  GetScriptUnitName(ScriptName: string): string;
@@ -2762,7 +2762,7 @@ type
     function  GetCustomData(key: integer; list: TList): integer; virtual;
 {$IFNDEF NO_D3DBILLBOARDS}
     function  GetBillBoards(key: integer; list: TList): integer; virtual;
-{$ENDIF}    
+{$ENDIF}
     function  GetScenes(key: integer; list: TList): integer; virtual;
     function  GetObjectsByID(ID: integer; key: integer; list: TList): integer; virtual;
     function  GetNumObjectsByID(ID: integer): integer; virtual;
@@ -2927,7 +2927,7 @@ type
           start_end: integer;
           sidedefs: integer;
           foo: boolean;
-         ); 
+         );
   end;
 
   PSectorLineDef = ^TSectorLineDef;
@@ -3196,7 +3196,7 @@ type
   PStack = ^TStack;
   TStack = class(TObject)
   private
-    top  : PStackNode;       
+    top  : PStackNode;
   public
     constructor Create; virtual;
     function Empty: boolean;
@@ -3237,7 +3237,7 @@ procedure CopySectorCollectionInfo2(source: PD3DSectorCollectionInfo2;
 
 procedure CopySectorCollectionInfoFromInfo2(source: PD3DSectorCollectionInfo2;
   dest: PD3DSectorCollectionInfo);
-                           
+
 procedure CopySectorCollectionInfo2FromInfo(source: PD3DSectorCollectionInfo;
   dest: PD3DSectorCollectionInfo2);
 
@@ -4678,7 +4678,7 @@ begin
   Texture[1] := aTexture2;
 {$IFNDEF NO_DXMESHES}
   fMesh.Tex2 := Texture[1];
-{$ENDIF}  
+{$ENDIF}
 end;
 
 procedure TD3DGenericRTLPolygon.ReduceMemory;
@@ -5218,7 +5218,7 @@ begin
 
 
   idx := CurTextureIndex;
-  
+
   dev.SetTexture(0, Textures[idx, 0].Surface.IDDSurface7);
   if fDrawMethod = rpd_Normal then
   begin
@@ -15058,7 +15058,7 @@ begin
     s.Read(DrawCylinder, SizeOf(DrawCylinder));
   end;
   CreateInitialVertexes;
-  ApplyInfoToVertexes;                       
+  ApplyInfoToVertexes;
 end;
 {$ENDIF}
 
@@ -15197,7 +15197,7 @@ end;
 destructor TD3DText.Destroy;
 begin
   Inherited;
-  SizeNumVertexes(0);                       
+  SizeNumVertexes(0);
 end;
 
 function TD3DText.GetText: string;
@@ -15252,7 +15252,7 @@ var i, j, i3, advance, num: integer;
       inc(advance, adv);
     end;
 
-begin                                               
+begin
   numVertexes := 0;
   ReAllocMem(TheInitialVertexes, 0);
   aC := CA_MAKE(Info.frontC, 0);
@@ -17480,7 +17480,7 @@ begin
     end;
     CanSaveUndo := flag;
   end;
-end;            
+end;
 
 function TD3DScene.CanUndo: boolean;
 begin
@@ -17494,7 +17494,7 @@ function TD3DScene.CanRedo: boolean;
 begin
   if Assigned(RedoStack) then
     Result := not RedoStack.Empty
-  else                          
+  else
     Result := False;
 end;
 
@@ -24616,7 +24616,7 @@ begin
             TD3DCylinder.Create(DXDraw, AddTexturesToCollection(TextureNames^),
               PD3DCylinderInfo(pInfo)^);
         end;
-{$ENDIF}        
+{$ENDIF}
       ID3D_Scene:
         begin
           TextureName := PD3DSceneInfo(pInfo)^.PathToScene;
@@ -24633,7 +24633,7 @@ begin
           (D3DSurface as TD3DPlugIn).AcceptPosition(fPosition);
           (D3DSurface as TD3DPlugIn).AcceptRotation(fRotation);
         end;
-{$ENDIF}        
+{$ENDIF}
 {$IFNDEF NO_D3DRINGS}
       ID3D_Ring:
         begin
@@ -24644,7 +24644,7 @@ begin
             TD3DRing.Create(DXDraw, AddTexturesToCollection(TextureNames^),
               PD3DRingInfo(pInfo)^);
         end;
-{$ENDIF}        
+{$ENDIF}
 {$IFNDEF NO_D3DSECTORCOLLECTIONS}
       ID3D_SectorCollection:
         begin
@@ -26310,10 +26310,10 @@ begin
 {$ENDIF}
 {$IFNDEF NO_D3DBILLBOARDS}
   OptimizeBillBoards;
-{$ENDIF}  
+{$ENDIF}
 {$IFNDEF NO_D3DSOUNDS}
   Update3DSounds;
-{$ENDIF}  
+{$ENDIF}
   ForceRecalc;
 end;
 
@@ -26827,10 +26827,10 @@ begin
 {$ENDIF}
 {$IFNDEF NO_D3DBILLBOARDS}
         OptimizeBillBoards;
-{$ENDIF}        
+{$ENDIF}
 {$IFNDEF NO_D3DSOUNDS}
         Update3DSounds;
-{$ENDIF}        
+{$ENDIF}
         Textures.Sorted := True;
         ForceRecalc;
       end;
@@ -27611,7 +27611,7 @@ begin
   try
     AppendFromStream(f, x, y, z, dx, dy, dz);
     fModified := True;
-  finally                        
+  finally
     f.free;
   end;
 end;
@@ -30509,7 +30509,7 @@ begin
   ReallocMem(inf.Sectors, 0);
   inf.NumSectors := 0;
   dispose(inf);
-end;                     
+end;
 
 procedure CopySectorCollectionInfo(source: PD3DSectorCollectionInfo;
   dest: PD3DSectorCollectionInfo);
@@ -36171,7 +36171,7 @@ begin
     Sender.AddFunction(@StdRegProc, 'procedure Sleep(I: Longint)', nil);
 {$IFNDEF NO_MESSAGESCAN}
     Sender.AddFunction(@StdRegProc, 'procedure MessageScan', nil);
-{$ENDIF}    
+{$ENDIF}
     Sender.AddFunction(@StdRegProc, 'function ScreenWidth: integer', nil);
     Sender.AddFunction(@StdRegProc, 'function ScreenHeight: integer', nil);
 
@@ -36186,7 +36186,7 @@ begin
 
     Sender.AddFunction(@StdVersionRegProc, 'function Version: string', nil);
     Sender.AddFunction(@StdVersionRegProc, 'function LongVersion: string', nil);
-    
+
     Sender.AddFunction(@FutureProcsRegProc, 'procedure AddFutureProc(procName: string; EventID: integer; TimeDelta: Double)', nil);
     Sender.AddFunction(@FutureProcsRegProc, 'function GetNumFutureProcs(EventID: integer): integer', nil);
     Sender.AddFunction(@FutureProcsRegProc, 'procedure DeleteFutureProcs(EventID: integer)', nil);
@@ -36333,7 +36333,7 @@ begin
     Sender.AddFunction(@WindowsColorsRegProc, 'function cl3DLight: integer', nil);
     Sender.AddFunction(@WindowsColorsRegProc, 'function clInfoText: integer', nil);
     Sender.AddFunction(@WindowsColorsRegProc, 'function clInfoBk: integer', nil);
-                                  
+
 // Keyboard input
     Sender.AddFunction(@WindowsRegProc, 'function IsKeyDown(Code: integer): boolean;', nil);
     Sender.AddFunction(@WindowsRegProc, 'function IsKeyToggled(Code: integer): boolean;', nil);
@@ -36598,7 +36598,7 @@ begin
     Sender.AddVariable('WM_SETCURSOR', rsInteger, True)^.Cv_SInt32 :=  $0020;
     Sender.AddVariable('WM_MOUSEACTIVATE', rsInteger, True)^.Cv_SInt32 :=  $0021;
     Sender.AddVariable('WM_CHILDACTIVATE', rsInteger, True)^.Cv_SInt32 :=  $0022;
-    Sender.AddVariable('WM_QUEUESYNC', rsInteger, True)^.Cv_SInt32 :=  $0023;              
+    Sender.AddVariable('WM_QUEUESYNC', rsInteger, True)^.Cv_SInt32 :=  $0023;
     Sender.AddVariable('WM_GETMINMAXINFO', rsInteger, True)^.Cv_SInt32 :=  $0024;
     Sender.AddVariable('WM_PAINTICON', rsInteger, True)^.Cv_SInt32 :=  $0026;
     Sender.AddVariable('WM_ICONERASEBKGND', rsInteger, True)^.Cv_SInt32 :=  $0027;
@@ -36616,7 +36616,7 @@ begin
     Sender.AddVariable('WM_QUERYDRAGICON', rsInteger, True)^.Cv_SInt32 :=  $0037;
     Sender.AddVariable('WM_COMPAREITEM', rsInteger, True)^.Cv_SInt32 :=  $0039;
     Sender.AddVariable('WM_GETOBJECT', rsInteger, True)^.Cv_SInt32 :=  $003D;
-    Sender.AddVariable('WM_COMPACTING', rsInteger, True)^.Cv_SInt32 :=  $0041;         
+    Sender.AddVariable('WM_COMPACTING', rsInteger, True)^.Cv_SInt32 :=  $0041;
     Sender.AddVariable('WM_COMMNOTIFY', rsInteger, True)^.Cv_SInt32 :=  $0044;    { obsolete in Win32}
     Sender.AddVariable('WM_WINDOWPOSCHANGING', rsInteger, True)^.Cv_SInt32 :=  $0046;
     Sender.AddVariable('WM_WINDOWPOSCHANGED', rsInteger, True)^.Cv_SInt32 :=  $0047;
@@ -37555,7 +37555,7 @@ begin
     Sender.AddFunction(@SceneGetOldRotationRegProc, 'function _Scene_GetOldRotationX: double', nil);
     Sender.AddFunction(@SceneGetOldRotationRegProc, 'function _Scene_GetOldRotationY: double', nil);
     Sender.AddFunction(@SceneGetOldRotationRegProc, 'function _Scene_GetOldRotationZ: double', nil);
-                
+
     Sender.AddFunction(@SceneTimeRegProc, 'function _Scene_GetTime: double', nil);
     Sender.AddFunction(@SceneTimeRegProc, 'function _Scene_GetOldTime: double', nil);
     Sender.AddFunction(@SceneTimeRegProc, 'function _Scene_GetStartTime: double', nil);
@@ -37782,7 +37782,7 @@ begin
       RegisterDXImage(Sender);
 
     Result := ENoError;
-  end                             
+  end
   else if Name = 'DIALOGS' then
   begin
     RegisterDelphiFunction(Sender, 'procedure ShowMessage(Msg: string);', @ShowMessage);

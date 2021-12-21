@@ -40,7 +40,7 @@ uses
 type
   TSplashForm = class(TForm)
     Panel1: TPanel;
-    Image1: TImage;            
+    Image1: TImage;
     VersionLabel: TLabel;
     Label3: TLabel;
     Label1: TLabel;

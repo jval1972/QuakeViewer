@@ -126,7 +126,7 @@ type
     destructor Destroy; override;
     procedure Release;
   end;
-    
+
   {  TDirectDrawSurface  }
 
   TDirectDrawSurface = class(TDirectX)
@@ -615,7 +615,7 @@ type
   {  EDirect3DTextureError  }
 
   EDirect3DTextureError = class(Exception);
-  
+
   {  TDirect3DTexture  }
 
   TDirect3DTexture = class
@@ -919,7 +919,7 @@ begin
   if DirectDrawDrivers=nil then
   begin
     DirectDrawDrivers := TDirectXDrivers.Create;
-    try                    
+    try
       DXDirectDrawEnumerate(@DDENUMCALLBACK, DirectDrawDrivers);
     except
       DirectDrawDrivers.Free;
@@ -1669,7 +1669,7 @@ begin
           SrcRect.Top := Source.Height-SrcRect.Bottom;
           SrcRect.Bottom := Source.Height-i;
         end;
-                                                   
+
         Blt(DestRect, SrcRect, BltFlags[Transparent] or DDBLT_DDFX, df, Source);
       end;
     end else
@@ -2273,7 +2273,7 @@ begin
             Blend := DXR_BLEND_ONE1;
           end else
           if Alpha>=255 then
-          begin    
+          begin
             Blend := DXR_BLEND_ONE2_SUB_ONE1;
           end else
           begin
@@ -2517,7 +2517,7 @@ begin
     if DIB.Size>0 then
       LoadFromGraphic(DIB);
   finally
-    DIB.Free;                
+    DIB.Free;
   end;
 end;
 
@@ -2532,7 +2532,7 @@ begin
 
   if (@Rect<>nil) and ((Rect.Left<>0) or (Rect.Top<>0) or (Rect.Right<>Width) or (Rect.Bottom<>Height)) then
     DXResult := ISurface.Lock(@Rect, FLockSurfaceDesc, DDLOCK_WAIT, 0)
-  else                                                                
+  else
     DXResult := ISurface.Lock(nil, FLockSurfaceDesc, DDLOCK_WAIT, 0);
   if DXResult<>DD_OK then Exit;
 
@@ -2541,7 +2541,7 @@ begin
 
   Result := True;
 end;
-                    
+
 function TDirectDrawSurface.Lock(var SurfaceDesc: TDDSurfaceDesc): Boolean;
 begin
   Result := False;
@@ -2827,13 +2827,13 @@ begin
       DDraw.Free;
     end;
   end;
-                
+
   TempList := TList.Create;
   try
     for i:=0 to FModes.Count-1 do
       TempList.Add(FModes.Items[i]);
     TempList.Sort(@Compare);
-                              
+
     for i:=FModes.Count-1 downto 0 do
       TDXDrawDisplayMode(TempList[i]).Index := i;
   finally
@@ -3981,8 +3981,8 @@ begin
     begin
       FDXDraw.FCalledDoInitializeSurface := False;
       FDXDraw.DoFinalizeSurface;
-    end;                     
-    
+    end;
+
     InitializeSurface;
 
     FDXDraw.NotifyEventList(dxntInitializeSurface);
@@ -3995,7 +3995,7 @@ end;
 {  TDXDrawDriverFlip  }
 
 procedure TDXDrawDriverFlip.Flip;
-begin                                        
+begin
   if (FDXDraw.FForm<>nil) and (FDXDraw.FForm.Active) then
     FDXDraw.FPrimary.DXResult := FDXDraw.FPrimary.ISurface.Flip(nil, DDFLIP_WAIT)
   else
@@ -4047,7 +4047,7 @@ begin
   Entries := TDXDrawRGBQuadsToPaletteEntries(FDXDraw.ColorTable,
     doAllowPalette256 in FDXDraw.NowOptions);
   FDXDraw.FPalette.CreatePalette(PaletteCaps, Entries);
-                          
+
   FDXDraw.FPrimary.Palette := FDXDraw.Palette;
   FDXDraw.FSurface.Palette := FDXDraw.Palette;
 
@@ -4194,7 +4194,7 @@ begin
         begin
           Finalize;
         end;
-  end;      
+  end;
   DefWindowProc(Message);
 end;
 
@@ -4322,7 +4322,7 @@ begin
   NotifyEventList(dxntSetSurfaceSize);
 
   if FAutoInitialize and (not (csDesigning in ComponentState)) then
-  begin                                       
+  begin
     if {(not (doFullScreen in FOptions)) or }(FSubClass=nil) then
       Initialize;
   end;
@@ -4434,9 +4434,9 @@ begin
       Flip;
     finally
       FNowOptions := Old;
-    end;    
+    end;
     if (Parent<>nil) and (Initialized) and (Surface.SurfaceDesc.ddscaps.dwCaps and DDSCAPS_VIDEOMEMORY<>0) then
-      Parent.Invalidate;                                                                                
+      Parent.Invalidate;
   end;
 end;
 
@@ -5306,7 +5306,7 @@ constructor TDirect3DTexture2.Create(ADXDraw: TCustomDXDraw; Graphic: TObject;
 begin
   inherited Create;
   FSurface := nil;
-  
+
   FSrcImage := Graphic;
   FAutoFreeGraphic := AutoFreeGraphic;
   FNeedLoadTexture := True;
@@ -7519,7 +7519,7 @@ begin
       Restore;
   end else
     inherited Assign(Source);
-end;                         
+end;
 
 procedure TPictureCollectionItem.ClearSurface;
 var
@@ -7584,9 +7584,9 @@ begin
   if (Result<=0) then
     Result := FPicture.Width;
 end;
-                                       
+
 procedure TPictureCollectionItem.Draw(Dest: TDirectDrawSurface; X, Y,
-  PatternIndex: Integer);            
+  PatternIndex: Integer);
 begin
   if FInitialized and (PatternIndex>=0) and (PatternIndex<FPatterns.Count) then
   begin
@@ -7798,10 +7798,10 @@ begin
       begin
         x2 := Min(BlockWidth, Max(FPicture.Width-x*BlockWidth, 0));
         if x2=0 then x2 := BlockWidth;
-        
+
         y2 := Min(BlockHeight, Max(FPicture.Height-y*BlockHeight, 0));
         if y2=0 then y2 := BlockHeight;
-             
+
         AddSurface(Bounds(x*BlockWidth, y*BlockHeight, x2, y2));
       end;
 
@@ -8192,7 +8192,7 @@ begin
       raise EDirectDrawOverlayError.CreateFmt(SCannotInitialized, [SOverlay]);
 
     FBackSurface := TDirectDrawSurface.Create(FDDraw);
-                                                        
+
     if SurfaceDesc.ddsCaps.dwCaps and DDSCAPS_FLIP<>0 then
     begin
       if FSurface.ISurface.GetAttachedSurface(BackBufferCaps, DDSurface)=DD_OK then

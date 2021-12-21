@@ -360,7 +360,7 @@ begin
   FMakeMenus := true;
   FMakeToolbars := true;
   FMakeControlBars := true;
-  
+
   FFont := TFont.Create;
   GetSystemMenuFont(FFont);
   FForm := Owner as TWinControl;
@@ -1761,7 +1761,7 @@ begin
     end;
 
     B.Transparent := true;
-   
+
     ACanvas.Draw(X1, X2, B);
 
 
@@ -2140,7 +2140,7 @@ function TmmXPMenu.AcceptComponent(Ctrl: TComponent): boolean;
 begin
   result := true;
   if Assigned(FOnAcceptComponent) then
-    FOnAcceptComponent(self, Ctrl, result); 
+    FOnAcceptComponent(self, Ctrl, result);
 end;
 
 function GetShadeColor(ACanvas: TCanvas; clr: TColor; Value: integer): TColor;

@@ -41,14 +41,14 @@ unit Unit1;
   5. Fixed halflife texture transparency
 
 /// ******
-Όταν αλλάζει το nearclippingplane αλλάζει και η συμπεριφορά της ομίχλης     
+Όταν αλλάζει το nearclippingplane αλλάζει και η συμπεριφορά της ομίχλης
 
   Έκδοση 1.21.
   1. Safe Mode rendering added
-  
+
   Έκδοση 1.2
   1. Πλήρη υποστήριξη αρχείων bsp του Quake3. (9/6/2004)
-  
+
   Έκδοση 1.1
   1. Δυνατότητα αποθέκευσης σε εικόνα στο δίσκο
 
@@ -1231,7 +1231,7 @@ begin
   else if VectorInCube(Scene.Position, bCube) then
   begin
     if Fog1.Checked then
-      Result := Min(bCubeSize, 80.0) 
+      Result := Min(bCubeSize, 80.0)
     else
       Result := bCubeSize
   end
@@ -1377,7 +1377,7 @@ procedure TDXViewerForm.ApplicationEvents1Activate(Sender: TObject);
 begin
   if Scene = nil then
     Exit;
-    
+
   if DXDraw.Visible then
   try
     DXDraw.Finalize;

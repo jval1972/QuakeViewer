@@ -1,6 +1,6 @@
 {*******************************************************************************
 *
-*  TFileDrag Component - Adds support for dropping files from explorer onto a 
+*  TFileDrag Component - Adds support for dropping files from explorer onto a
 *                        a Delphi form.
 *
 *  Copyright (c) 1996 - Erik C. Nielsen ( 72233.1314@compuserve.com )
@@ -15,7 +15,7 @@ interface
 {$R FILEDRAGBTN.DCR}
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, 
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ShellApi;
 
 type

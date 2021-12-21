@@ -27,7 +27,7 @@ of the format, require that you obtain a license before using this
 component in any product to be sold for profit. This includes shareware,
 but freeware is exempt from this requirement. Following this ruling, a new
 public-domain graphic file format (.PNG) has been devised and it is to be
-hoped that freeware/shareware components for Delphi will follow. 
+hoped that freeware/shareware components for Delphi will follow.
 
 
 << Using TGifImage >>
@@ -83,7 +83,7 @@ Left Open :
   - Also store the format via SaveToStream override
     so the GIF format can be used in blob formats
     also !
-  - GIF 89a format not work propably 
+  - GIF 89a format not work propably
   - use real gif transarency for TransparentColor
     property instead of lower-left pixel
   - support of new PNG format
@@ -111,7 +111,7 @@ type
 implementation
 
 uses
-  Math; 
+  Math;
 
 const
   { image descriptor bit masks }
@@ -659,7 +659,7 @@ begin
      bfReserved2 := 0; {not currently used}
      bfOffBits := (4*256)+ Sizeof(TBitmapFileHeader)+
                            Sizeof(TBitmapInfoHeader);
-  end; 
+  end;
   {Write the file header}
   with Stream do begin
     Position:=0;

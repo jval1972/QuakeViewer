@@ -223,7 +223,7 @@ var
 
   procedure CheckErr(err: integer);
   begin
-    if err < 0 then 
+    if err < 0 then
       raise exception.Create(Format('ZDecompress2(): Zip file error(%d)', [err]));
   end;
 

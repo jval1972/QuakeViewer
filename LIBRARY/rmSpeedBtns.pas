@@ -313,19 +313,19 @@ var
    FUnitTimer : TTimer;
 
 { TGlyphList }
-    
+
 constructor TGlyphList.CreateSize(AWidth, AHeight: Integer);
 begin
   inherited CreateSize(AWidth, AHeight);
   Used := TBits.Create;
 end;
-    
+
 destructor TGlyphList.Destroy;
 begin
   Used.Free;
   inherited Destroy;
 end;
-    
+
 function TGlyphList.AllocateIndex: Integer;
 begin
   Result := Used.OpenBit;
@@ -336,14 +336,14 @@ begin
   end;
   Used[Result] := True;
 end;
-    
+
 function TGlyphList.AddMasked(Image: TBitmap; MaskColor: TColor): Integer;
 begin
   Result := AllocateIndex;
   ReplaceMasked(Result, Image, MaskColor);
   Inc(FCount);
 end;
-    
+
 procedure TGlyphList.Delete(Index: Integer);
 begin
   if Used[Index] then
@@ -354,19 +354,19 @@ begin
 end;
 
 { TGlyphCache }
-    
+
 constructor TGlyphCache.Create;
 begin
   inherited Create;
   GlyphLists := TList.Create;
 end;
-    
+
 destructor TGlyphCache.Destroy;
 begin
   GlyphLists.Free;
   inherited Destroy;
 end;
-    
+
 function TGlyphCache.GetList(AWidth, AHeight: Integer): TGlyphList;
 var
   I: Integer;
@@ -390,18 +390,18 @@ begin
     List.Free;
   end;
 end;
-    
+
 function TGlyphCache.Empty: Boolean;
 begin
   Result := GlyphLists.Count = 0;
 end;
-    
+
 var
   GlyphCache: TGlyphCache = nil;
   ButtonCount: Integer = 0;
 
 { TButtonGlyph }
-    
+
 constructor TButtonGlyph.Create;
 var
   I: TrmButtonState;
@@ -415,7 +415,7 @@ begin
     FIndexs[I] := -1;
   if GlyphCache = nil then GlyphCache := TGlyphCache.Create;
 end;
-    
+
 destructor TButtonGlyph.Destroy;
 begin
   FOriginal.Free;
@@ -427,7 +427,7 @@ begin
   end;
   inherited Destroy;
 end;
-    
+
 procedure TButtonGlyph.Invalidate;
 var
   I: TrmButtonState;
@@ -440,7 +440,7 @@ begin
   GlyphCache.ReturnList(FGlyphList);
   FGlyphList := nil;
 end;
-    
+
 procedure TButtonGlyph.GlyphChanged(Sender: TObject);
 begin
   if Sender = FOriginal then
@@ -450,7 +450,7 @@ begin
     if Assigned(FOnChange) then FOnChange(Self);
   end;
 end;
-    
+
 procedure TButtonGlyph.SetGlyph(Value: TBitmap);
 var
   Glyphs: Integer;
@@ -468,7 +468,7 @@ begin
     end;
   end;
 end;
-    
+
 procedure TButtonGlyph.SetNumGlyphs(Value: TNumGlyphs);
 begin
   if (Value <> FNumGlyphs) and (Value > 0) then
@@ -536,7 +536,7 @@ begin
               MonoBmp.Monochrome := True;
               MonoBmp.Width := IWidth;
               MonoBmp.Height := IHeight;
-    
+
               { Convert white to clBtnHighlight }
               DDB.Canvas.Brush.Color := clWhite;
               MonoBmp.Canvas.CopyRect(IRect, DDB.Canvas, ORect);
@@ -546,7 +546,7 @@ begin
               SetBkColor(DestDC, clWhite);
               BitBlt(DestDC, 0, 0, IWidth, IHeight,
                      MonoBmp.Canvas.Handle, 0, 0, ROP_DSPDxax);
-    
+
               { Convert gray to clBtnShadow }
               DDB.Canvas.Brush.Color := clGray;
               MonoBmp.Canvas.CopyRect(IRect, DDB.Canvas, ORect);
@@ -556,7 +556,7 @@ begin
               SetBkColor(DestDC, clWhite);
               BitBlt(DestDC, 0, 0, IWidth, IHeight,
                      MonoBmp.Canvas.Handle, 0, 0, ROP_DSPDxax);
-    
+
               { Convert transparent color to clBtnFace }
               DDB.Canvas.Brush.Color := ColorToRGB(FTransparentColor);
               MonoBmp.Canvas.CopyRect(IRect, DDB.Canvas, ORect);
@@ -630,7 +630,7 @@ begin
       ImageList_DrawEx(FGlyphList.Handle, Index, Canvas.Handle, X, Y, 0, 0,
         ColorToRGB(clBtnFace), clNone, ILD_Normal);
 end;
-    
+
 procedure TButtonGlyph.DrawButtonText(Canvas: TCanvas; const Caption: string;
   TextBounds: TRect; State: TrmButtonState; BiDiFlags: LongInt);
 begin
@@ -652,7 +652,7 @@ begin
         DT_CENTER or DT_VCENTER or BiDiFlags);
   end;
 end;
-    
+
 procedure TButtonGlyph.CalcButtonLayout(Canvas: TCanvas; const Client: TRect;
   const Offset: TPoint; const Caption: string; Layout: TButtonLayout; Margin,
   Spacing: Integer; var GlyphPos: TPoint; var TextBounds: TRect;
@@ -664,16 +664,16 @@ var
 begin
   if (BiDiFlags and DT_RIGHT) = DT_RIGHT then
     if Layout = blGlyphLeft then Layout := blGlyphRight
-    else 
+    else
       if Layout = blGlyphRight then Layout := blGlyphLeft;
   { calculate the item sizes }
   ClientSize := Point(Client.Right - Client.Left, Client.Bottom -
     Client.Top);
-    
+
   if FOriginal <> nil then
     GlyphSize := Point(FOriginal.Width div FNumGlyphs, FOriginal.Height) else
     GlyphSize := Point(0, 0);
-    
+
   if Length(Caption) > 0 then
   begin
     TextBounds := Rect(0, 0, Client.Right - Client.Left, 0);
@@ -701,11 +701,11 @@ begin
     GlyphPos.X := (ClientSize.X - GlyphSize.X + 1) div 2;
     TextPos.X := (ClientSize.X - TextSize.X + 1) div 2;
   end;
-    
+
   { if there is no text or no bitmap, then Spacing is irrelevant }
   if (TextSize.X = 0) or (GlyphSize.X = 0) then
     Spacing := 0;
-    
+
   { adjust Margin and Spacing }
   if Margin = -1 then
   begin
@@ -763,7 +763,7 @@ begin
         TextPos.Y := GlyphPos.Y - Spacing - TextSize.Y;
       end;
   end;
-    
+
   { fixup the result variables }
   with GlyphPos do
   begin
@@ -1053,7 +1053,7 @@ begin
     end;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.Loaded;
 var
   State: TrmButtonState;
@@ -1156,7 +1156,7 @@ begin
   else if not FMouseInControl then
     UpdateTracking;
 end;
-    
+
 procedure TrmCustomSpeedButton.MouseUp(Button: TMouseButton; Shift: TShiftState;
   X, Y: Integer);
 var
@@ -1221,33 +1221,33 @@ begin
     UpdateTracking;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.Click;
 begin
   inherited Click;
 end;
-    
+
 function TrmCustomSpeedButton.GetPalette: HPALETTE;
 begin
   Result := Glyph.Palette;
 end;
-    
+
 function TrmCustomSpeedButton.GetGlyph: TBitmap;
 begin
   Result := TButtonGlyph(FGlyph).Glyph;
 end;
-    
+
 procedure TrmCustomSpeedButton.SetGlyph(Value: TBitmap);
 begin
   TButtonGlyph(FGlyph).Glyph := Value;
   Invalidate;
 end;
-    
+
 function TrmCustomSpeedButton.GetNumGlyphs: TNumGlyphs;
 begin
   Result := TButtonGlyph(FGlyph).NumGlyphs;
 end;
-    
+
 procedure TrmCustomSpeedButton.SetNumGlyphs(Value: TNumGlyphs);
 begin
   if Value < 0 then Value := 1
@@ -1258,12 +1258,12 @@ begin
     Invalidate;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.GlyphChanged(Sender: TObject);
 begin
   Invalidate;
 end;
-    
+
 procedure TrmCustomSpeedButton.UpdateExclusive;
 var
   Msg: TMessage;
@@ -1277,7 +1277,7 @@ begin
     Parent.Broadcast(Msg);
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.SetDown(Value: Boolean);
 begin
   if FGroupIndex = 0 then Value := False;
@@ -1299,17 +1299,17 @@ begin
     if Value then UpdateExclusive;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.SetFlat(Value: Boolean);
 begin
-  if fStyle = sbsComboButton then value := false;   
+  if fStyle = sbsComboButton then value := false;
   if Value <> FFlat then
   begin
     FFlat := Value;
     Invalidate;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.SetGroupIndex(Value: Integer);
 begin
   if FStyle in [sbsMenu, sbsComboButton] then value := 0;
@@ -1319,7 +1319,7 @@ begin
     UpdateExclusive;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.SetLayout(Value: TButtonLayout);
 begin
   if FLayout <> Value then
@@ -1328,7 +1328,7 @@ begin
     Invalidate;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.SetMargin(Value: Integer);
 begin
   if (Value <> FMargin) and (Value >= -1) then
@@ -1337,7 +1337,7 @@ begin
     Invalidate;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.SetSpacing(Value: Integer);
 begin
   if Value <> FSpacing then
@@ -1370,13 +1370,13 @@ begin
     UpdateExclusive;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.WMLButtonDblClk(var Message: TWMLButtonDown);
 begin
   inherited;
   if FDown then DblClick;
 end;
-    
+
 procedure TrmCustomSpeedButton.CMEnabledChanged(var Message: TMessage);
 const
   NewState: array[Boolean] of TrmButtonState = (bsDisabled, bsUp);
@@ -1385,7 +1385,7 @@ begin
   UpdateTracking;
   Repaint;
 end;
-    
+
 procedure TrmCustomSpeedButton.CMButtonPressed(var Message: TMessage);
 var
   Sender: TrmCustomSpeedButton;
@@ -1405,7 +1405,7 @@ begin
     end;
   end;
 end;
-    
+
 procedure TrmCustomSpeedButton.CMDialogChar(var Message: TCMDialogChar);
 begin
   with Message do
@@ -1417,17 +1417,17 @@ begin
     end else
       inherited;
 end;
-    
+
 procedure TrmCustomSpeedButton.CMFontChanged(var Message: TMessage);
 begin
   Invalidate;
 end;
-    
+
 procedure TrmCustomSpeedButton.CMTextChanged(var Message: TMessage);
 begin
   Invalidate;
 end;
-    
+
 procedure TrmCustomSpeedButton.CMSysColorChange(var Message: TMessage);
 begin
   with TButtonGlyph(FGlyph) do
@@ -1440,9 +1440,9 @@ end;
 procedure TrmCustomSpeedButton.CMMouseEnter(var Message: TMessage);
 begin
   inherited;
-  { Don't draw a border if DragMode <> dmAutomatic since this button is meant to 
+  { Don't draw a border if DragMode <> dmAutomatic since this button is meant to
     be used as a dock client. }
-  if FFlat and not FMouseInControl and Enabled and (DragMode <> dmAutomatic) 
+  if FFlat and not FMouseInControl and Enabled and (DragMode <> dmAutomatic)
     and (GetCapture = 0) then
   begin
     FMouseInControl := True;
@@ -1697,7 +1697,7 @@ begin
   if Button = mbLeft then
   begin
     SetFocusBtn (TrmTimerSpeedButton (Sender));
-    if (FFocusControl <> nil) and FFocusControl.TabStop and 
+    if (FFocusControl <> nil) and FFocusControl.TabStop and
         FFocusControl.CanFocus and (GetFocus <> FFocusControl.Handle) then
       FFocusControl.SetFocus
     else if TabStop and (GetFocus <> Handle) and CanFocus then
@@ -1721,7 +1721,7 @@ begin
   begin
     FFocusedButton.TimeBtnState := FFocusedButton.TimeBtnState - [tbFocusRect];
     FFocusedButton := Btn;
-    if (GetFocus = Handle) then 
+    if (GetFocus = Handle) then
     begin
        FFocusedButton.TimeBtnState := FFocusedButton.TimeBtnState + [tbFocusRect];
        Invalidate;
@@ -1824,7 +1824,7 @@ end;
 
 function TrmSpinButton.GetDownEnabled: boolean;
 begin
-   result := FDownButton.Enabled;  
+   result := FDownButton.Enabled;
 end;
 
 function TrmSpinButton.GetUpEnabled: boolean;

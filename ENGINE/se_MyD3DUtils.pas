@@ -96,7 +96,7 @@ type
   PIndexesArray = ^TIndexesArray;
 
   TD3DVertexArray = array[0..$FFFF] of TD3DVertex;
-  
+
   PD3DVertexArray = ^TD3DVertexArray;
   PPD3DVertexArray = ^PD3DVertexArray;
   PPIndexesArray = ^PIndexesArray;

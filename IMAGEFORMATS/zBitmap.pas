@@ -1,8 +1,8 @@
-// Here we present a new graphic format named compressed bitmap. It is a raster graphic 
-// format that makes compression, but it does not lose some of the original data (like 
-// jpeg graphic format). The compression is generally better that standard zip compression. 
-// That is achieved by compressing the difference of one pixel from its previews, not the 
-// original data. Note that this opperation implements in 8bpp and 24 bpp images only. 
+// Here we present a new graphic format named compressed bitmap. It is a raster graphic
+// format that makes compression, but it does not lose some of the original data (like
+// jpeg graphic format). The compression is generally better that standard zip compression.
+// That is achieved by compressing the difference of one pixel from its previews, not the
+// original data. Note that this opperation implements in 8bpp and 24 bpp images only.
 // Other resolutions are supported, but they use standard zip compression. It needs zLib.
 ///////////////////////////////////////////////////
 // Author: Jim Valavanis,

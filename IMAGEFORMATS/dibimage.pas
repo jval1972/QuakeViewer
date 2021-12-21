@@ -37,7 +37,7 @@ type
   end;
 
   TDIBSharedImage = class(TSharedImage)
-  private       
+  private
     FBitCount: Integer;
     FBitmapInfo: PBitmapInfo;
     FBitmapInfoSize: Integer;
@@ -77,7 +77,7 @@ type
   TDIB = class(TGraphic)
   private
     FCanvas: TCanvas;
-    FImage: TDIBSharedImage;    
+    FImage: TDIBSharedImage;
 
     FProgressName: string;
     FProgressOldY: DWORD;
@@ -1195,7 +1195,7 @@ begin
       BI_RLE8: DecodeRLE8;
     else
       Duplicate(Source, MemoryImage);
-    end;                                               
+    end;
   end;
 end;
 
@@ -1495,7 +1495,7 @@ begin
       AssignGraphic(TPicture(Source).Graphic)
     else
       Clear;
-  end else 
+  end else
     inherited Assign(Source);
 end;
 
@@ -1731,7 +1731,7 @@ begin
   if not FImage.FMemoryImage then
     GDIFlush;
   Result := FTopPBits;
-end;           
+end;
 
 function TDIB.GetWidth: Integer;
 begin
@@ -1796,7 +1796,7 @@ begin
     end;
   end;
 end;
-                            
+
 procedure TDIB.DefineProperties(Filer: TFiler);
 begin
   inherited DefineProperties(Filer);
@@ -1977,7 +1977,7 @@ begin
   begin
     if FCanvas<>nil then
       FCanvas.Handle := 0;
-    
+
     FImage.Release;
     FImage := Value;
     FImage.Reference;
@@ -2606,7 +2606,7 @@ var
 
         if LastY-y=Radius-1 then
         begin
-          Inc(LastY); 
+          Inc(LastY);
           if LastY >= Height then LastY := Height - 1;
           AddAverage(LastY, Temp.Width, AveX^);
         end;
@@ -2642,7 +2642,7 @@ var
 
           if LastX - x = Radius - 1 then
           begin
-            Inc(LastX); 
+            Inc(LastX);
             if LastX >= Width then LastX := Width - 1;
             with AveX[LastX] do
             begin
@@ -2933,11 +2933,11 @@ begin
                   PWord(P2)^ := PWord(@c)^;
                   Inc(PWord(P1));
                   Dec(PWord(P2));
-                end;       
+                end;
               end;
           24: begin
                 P2 := Pointer(Integer(P1) + (Width - 1) * 3);
-                for x := 0 to Width2 - 1 do              
+                for x := 0 to Width2 - 1 do
                 begin
                   PBGR(@c)^ := PBGR(P1)^;
                   PBGR(P1)^ := PBGR(P2)^;
@@ -2964,7 +2964,7 @@ begin
     finally
       EndProgress;
     end;
-  end 
+  end
   else if (MirrorX) and (MirrorY) then
   begin
     StartProgress('Mirror');
@@ -3036,7 +3036,7 @@ begin
                 end;
               end;
         end;
- 
+
         UpdateProgress(y * 2);
       end;
     finally
@@ -3062,7 +3062,7 @@ begin
         rgbBlue := 255-rgbBlue;
       end;
     UpdatePalette;
-  end 
+  end
   else
   begin
     P := PBits;
@@ -3156,19 +3156,19 @@ procedure TCustomDXPaintBox.Paint;
       begin
         inherited Canvas.StretchDraw(Bounds(-(Width - ClientWidth) div 2,
           -(Height - ClientHeight) div 2, Width, Height), FDIB);
-      end 
+      end
       else
       begin
         inherited Canvas.StretchDraw(Bounds(0, 0, Width, Height), FDIB);
       end;
-    end 
+    end
     else
     begin
       if FCenter then
       begin
         inherited Canvas.Draw(-(Width-ClientWidth) div 2, -(Height - ClientHeight) div 2,
           FDIB);
-      end 
+      end
       else
       begin
         inherited Canvas.Draw(0, 0, FDIB);

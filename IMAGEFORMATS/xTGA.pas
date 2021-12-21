@@ -1,8 +1,8 @@
-// Truevision Targa is a raster image format that it is most often used to store 
+// Truevision Targa is a raster image format that it is most often used to store
 // high-color images. It supports one alpha channel per image. The following source
 // code supports only 24bpp and 32bpp uncompressed TGA images.
 ///////////////////////////////////////////////////
-// Author: Jim Valavanis, 
+// Author: Jim Valavanis,
 // E-Mail: jimmyvalavanis@yahoo.gr
 // Site  : http://www.geocities.com/jimmyvalavanis/
 ///////////////////////////////////////////////////

@@ -1,10 +1,10 @@
-// The Heretic II mipmap graphic format is a raster image format introduced by Heretic II game. 
-// This graphic format is a MipMap, that means it have the full size picture and some other 
-// pictures each one one half the size of the previous picture.File extenstion for this graphic 
-// format is m8 (*.m8). Supported bits per pixel for this graphic format is 8bpp. It uses a 256 
+// The Heretic II mipmap graphic format is a raster image format introduced by Heretic II game.
+// This graphic format is a MipMap, that means it have the full size picture and some other
+// pictures each one one half the size of the previous picture.File extenstion for this graphic
+// format is m8 (*.m8). Supported bits per pixel for this graphic format is 8bpp. It uses a 256
 // color palette, just as 8bpp Windows bitmaps.
 ///////////////////////////////////////////////////
-// Author: Jim Valavanis, 
+// Author: Jim Valavanis,
 // E-Mail: jimmyvalavanis@yahoo.gr
 // Site  : http://www.geocities.com/jimmyvalavanis/
 ///////////////////////////////////////////////////
@@ -174,7 +174,7 @@ end;
 procedure ForceBitmapTo8bpp(bmp: TBitmap);
 // Converts a bitmap to 8 bits per pixel, returns false
 // if bitmap has more than 256 unique colors
-var 
+var
   CC: PColorAppearences;
   i, j, k: integer;
   b: PByteArray;

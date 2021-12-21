@@ -4842,7 +4842,7 @@ var
     begin
       asm
         jmp @@EndCode
-      @@StartCode:    
+      @@StartCode:
         movzx eax,byte ptr [offset _null]{}@@Col1:
         movzx edx,byte ptr [offset _null]{}@@Col2:
         sub eax,edx
@@ -4936,7 +4936,7 @@ var
 
     procedure genBlend_ZERO(var Code: Pointer; Dest: PDXRMachine_Color);
     begin
-      asm                 
+      asm
         jmp @@EndCode
       @@StartCode:
         mov dword ptr [offset _null],0{}@@Dest:
@@ -5899,12 +5899,12 @@ var
         sub edx,offset @@StartCode
         mov dword ptr [ecx+edx],eax
       end;
-                        
+
       if [chRed, chGreen]<=EnableChannels then
       begin
         asm
           jmp @@EndCode
-        @@StartCode:    
+        @@StartCode:
           mov eax,dword ptr [offset _null]{}@@Col1:
           mov edx,dword ptr [offset _null]{}@@Col2:
           shr eax,8
@@ -6827,7 +6827,7 @@ var
             if (Tree.BlendTree2<>nil) and (Tree.BlendTree2.Typ=DXR_TREETYPE_LOADTEXTURE) then
             begin
               ch := TextureList[Tree.BlendTree2.Texture].EnableChannels;
-              
+
               if (chRed in Tree.BlendTree2.Channels) and (not (chRed in ch)) then
               begin
                 ConstChannels2 := ConstChannels2 + [chRed];
@@ -7075,7 +7075,7 @@ begin
     Blend := DXR_BLEND_ONE1;
     TextureFilter := DXR_TEXTUREFILTER_NEAREST;
     EnableDrawLine := $FFFFFFFF;
-  end;                 
+  end;
 
   for i:=0 to DXR_MAXTEXTURE-1 do
     with States.TextureList[i] do
@@ -7770,11 +7770,11 @@ function RotationClip(const Dest, Src: TDXR_Surface;
     Result.X := X+Trunc(ax * c - ay * s);
     Result.Y := Y+Trunc(ax * s + ay * c);
   end;
-                     
+
 var
   i: Integer;
   Points: array[0..3] of TPoint;
-begin                      
+begin
   Points[0] := RotatePoint(0, 0);
   Points[1] := RotatePoint(Width, 0);
   Points[2] := RotatePoint(0, Height);
@@ -7900,8 +7900,8 @@ begin
   Tree := DXRMachine.CreateTree_Blend(Blend,
     DXRMachine.CreateTree_LoadConstColor(Byte(Col), Byte(Col shr 8), Byte(Col shr 16), Byte(Col shr 24)),
     DXRMachine.CreateTree2(DXR_TREETYPE_LOADDESTPIXEL));
-  DXRMachine.Compile(Tree);     
-    
+  DXRMachine.Compile(Tree);
+
   {  Run  }
   for dy:=StartY to EndY-1 do
   begin
@@ -7941,7 +7941,7 @@ begin
   end else
     IncPh := MulDiv64(256, 65536, Len);
   i := ph*65536+StartSrcY*IncPh;
-             
+
   sy := StartSrcY * IncY + SrcRect.Top*TextureAxisFloat;
 
   if ((sy+(EndY-StartY)*IncY) shr 16>Integer(Src.Height)) then Exit;

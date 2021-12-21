@@ -583,7 +583,7 @@ begin
     Result := Result + (Ord(s[1]) + Ord(s[Length(s)-1]));
   Result := Result and 255;
 end;
-               
+
 constructor THashCollectionItem.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
